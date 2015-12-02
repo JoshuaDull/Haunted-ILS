@@ -1,6 +1,6 @@
 <?php
 $hn = 'localhost';
-$db = 'alt_text';
+$db = 'jdull';
 $un = 'root';
-$pw = 'sils2016';
+$pw = '30511160verstop';
 ?>
