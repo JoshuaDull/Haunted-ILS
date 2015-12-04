@@ -11,21 +11,21 @@ if (isset($_POST['submit'])) { //check if the form has been submitted
 		$conn = new mysqli($hn, $un, $pw, $db);
 		if ($conn->connect_error) die($conn->connect_error);
 		$user_name = sanitizeMySQL($conn, $_POST['user_name']);
-		$password = sanitizeMySQL($conn, $_POST['password']);			
-		$salt1 = "rI3l*";  
-		$salt2 = "@6HgY";  
+		$password = sanitizeMySQL($conn, $_POST['password']);
+		$salt1 = "rI3l*";
+		$salt2 = "@6HgY";
 		$password = hash('ripemd128', $salt1.$password.$salt2);
-		$query  = "SELECT first_name, last_name FROM users WHERE user_name='$user_name' AND password='$password'"; 
-		$result = $conn->query($query);    
-		if (!$result) die($conn->error); 
+		$query  = "SELECT first_name, last_name FROM users WHERE user_name='$user_name' AND password='$password'";
+		$result = $conn->query($query);
+		if (!$result) die($conn->error);
 		$rows = $result->num_rows;
 		if ($rows==1) {
 			$row = $result->fetch_assoc();
 			$_SESSION['first_name'] = $row['first_name'];
 			$_SESSION['last_name'] = $row['last_name'];
-			$go_to = $_GET ["landing"];
-			header("Location: ". $go_to);
-			echo($goto);		
+			$goto = empty($_SESSION['goto']) ? '/Haunted-ILS/index.php' : $_SESSION['goto'];
+			header('Location: ' . $goto);
+			exit;
 		} else {
 			$message = '<p class="error">Invalid username/password combination!</p>';
 		}
