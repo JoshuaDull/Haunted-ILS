@@ -4,6 +4,7 @@ session_start();
 
 require_once 'includes/login.php';
 require_once 'includes/functions.php';
+require_once 'includes/auth.php';
 
 if (isset($_POST['submit'])) {
   if (!isset($_POST['option'])) {

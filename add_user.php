@@ -5,7 +5,7 @@ require_once 'includes/login.php';
 require_once 'includes/functions.php';
 
 if (isset($_POST['submit'])) { //check if the form has been submitted
-	if (empty($_POST['user_name']) || empty($_POST['password']) ) {
+	if (empty($_POST['user_name']) || empty($_POST['password']) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['email'])) {
 		$message = '<p>Please fill out all of the form fields!</p>';
 	} else {
 		$conn = new mysqli($hn, $un, $pw, $db);
@@ -22,16 +22,9 @@ if (isset($_POST['submit'])) { //check if the form has been submitted
 		$result = $conn->query($query);
 		if (!$result) {
 			die("database access failed: " . $conn->error);
-		// $rows = $result->num_rows;
-		// if ($rows==1) {
-		// 	$row = $result->fetch_assoc();
-		// 	$_SESSION['first_name'] = $row['first_name'];
-		// 	$_SESSION['last_name'] = $row['last_name'];
-		// 	$go_to = $_GET ["landing"];
-		// 	header("Location: ". $go_to);
-		// 	echo($goto);
 	} else {
-			$message = '<p>please sign in: <a href="sign_in.php">click here</p></a>';
+		$goto = '/Haunted-ILS/sign_in.php';
+		header('Location: ' .$goto);
 		}
 	}
 }
@@ -41,22 +34,31 @@ if (isset($_POST['submit'])) { //check if the form has been submitted
 include_once 'includes/header.php';
 if (isset($message)) echo $message;
 ?>
-<fieldset>
-<form method="POST" action="">
-
-		<legend>Create a new User</legend>
-		<label for="user_name">Username:</label>
-		<input type="text" name ="user_name"></br>
-		<label for="password">Password:</label>
-		<input type="text" name ="password"></br>
-		<label for="first_name">First Name:</label>
-		<input type="text" name ="first_name"></br>
-		<label for="last_name">Last Name:</label>
-		<input type="text" name ="last_name"></br>
-		<label for="email">Email Address:</label>
-		<input type="text" name ="email"></br>
-		<input type="submit" name="submit">
-
-</form></fieldset>
+<body class="windows">
+<div id="windowDiv">
+	<div id="windowHeader">
+		<span>Miskatonic University Library</span>
+	</div>
+	<div id="windowBody">
+		<fieldset class="fields">
+			<form method="POST" action="">
+				<!-- <legend>Create a new User</legend> -->
+				Username:<br>
+				<input type="text" name ="user_name" size="40" autofocus=""></br>
+				Password:<br>
+				<input type="text" name ="password" size="40"></br>
+				First Name:<br>
+				<input type="text" name ="first_name" size="40"></br>
+				Last Name:<br>
+				<input type="text" name ="last_name" size="40"></br>
+				Email Address:</br>
+				<input type="text" name ="email" size="40"></br>
+				<p class="buttons">
+					<input type="submit" name="submit" value="Create Account">
+				</p>
+			</form>
+		</fieldset>
+	</div>
+</div>
 </body>
 </html>

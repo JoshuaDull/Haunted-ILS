@@ -4,6 +4,7 @@ session_start();
 
 require_once 'includes/login.php';
 require_once 'includes/functions.php';
+require_once 'includes/auth.php';
 
 if (isset($_POST['submit'])) {
   if (!isset($_POST['option'])) {
@@ -36,7 +37,7 @@ for ($x = 0; $x < $word_count; $x++) {
   echo metaphone($pieces[$x]) . " ";
 }
 echo "<form method=\"POST\" action=\"level_one_final.php\"><fieldset style=\"width:50%\"><legend>Name the book</legend>";
-echo "<input type=\"text\" name=\"four\" size=\"100\"><br>";
+echo "<input type=\"text\" name=\"four\" size=\"100\" autofocus=\"\"><br>";
 echo "<input type=\"hidden\" name=\"score_one\" value=" . $score . ">";
 echo "<input type=\"hidden\" name=\"correct_answer\" value=" . $correct_answer . ">";
 echo "<br><br><input type=\"submit\" name=\"submit\"></form>";
