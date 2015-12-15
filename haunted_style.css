@@ -1,3 +1,13 @@
+body {
+  background-color: #000000;
+}
+
+h1, .search {
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
 #desktop {
     width: 100%;
     height: 100%;
@@ -100,14 +110,155 @@
 }
 
 .fields {
-  width:30%;
+  width: 30%;
   margin:auto;
   background-color:grey;
   color:black;
 }
 
+
 .toggle {
   background: #d1d1d1;
 inset 0px -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
 inset 0px 1px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+#metaphone {
+  color: white;
+  width: 500px;
+  margin: auto;
+}
+
+.story {
+  color: #008000;
+  text-align: center;
+}
+
+.text_animation {
+  margin: auto;
+  padding: 20px;
+  width: 500px;
+}
+
+.typed-cursor{
+    opacity: 1;
+    color: #008000;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.puzzle, .choices {
+  margin: auto;
+  display: none;
+  color: green;
+  width: 1000px;
+  height: 500px;
+}
+
+.game {
+  margin: auto;
+}
+
+.text {
+  color: #008000;
+  text-align: center;
+}
+
+h3 {
+  color: #008000;
+  text-align: center;
+}
+.note {
+  color: crimson;
+  margin: auto;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  border: solid #DC143C;
+  background-color: grey;
+}
+
+.score {
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+td {
+  text-align: left;
+  /*padding: 10px;*/
+  padding-right: 200px;
+}
+
+th {
+  background-image: url(images/blood.gif);
+  background-size: 200px 75px;
+}
+
+tr:hover {
+  background-image: url(images/blood.gif);
+  background-size: 200px 75px;
+}
+
+table {
+  padding: 10px;
+  color: white;
+  margin: auto;
+  font-family: fantasy;
+}
+
+.shelf {
+  margin:auto;
+  position: absolute;
+  color: white;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
+.question {
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+#search_table, #search_row  {
+  font-family: sans-serif;
+  background: black;
+  padding: 0px;
+  text-align: left;
+}
+
+#search_data {
+  font-family: sans-serif;
+  padding: 10px;
+  text-align: left;
+}
+
+#search_header, #search_header:hover {
+  font-family: sans-serif;
+  background: white;
+  padding: 0px;
+  text-align: left;
+  color: black;
+}
+
+#search_row:hover  {
+  background: white;
+  color: black;
 }

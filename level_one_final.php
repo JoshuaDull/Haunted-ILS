@@ -18,37 +18,29 @@ if (isset($_POST['submit'])) {
 		$query = "SELECT * FROM `books` WHERE book_id=$book_id";
 		$result = $conn->query($query);
 		if (!$result) {
-		  die ("database malfunciotn: " . $conn->error);
+		  die ("database malfunction: " . $conn->error);
 		} else {
 			$row = $result->fetch_assoc();
 			$correct_answer = $row['title'];
       $user_answer = $_POST['four'];
       similar_text($user_answer, $correct_answer, $percent);
-      echo $user_answer . " vs. " . $correct_answer. $percent;
       $score = ($_POST['score_one'] + ($percent * 1000));
       $score = round($score);
-
-	}
-}
-}
-
-
-    // if ($_POST['option'] == $_POST['answer']){
-    //   $message = $_POST['option'] . " was correct " . $_POST['answer'];
-    //   $score = ($_POST['score_one'] + 100);
-    //   echo "<br>your score is " . $score;
-    // } else {
-    //   $message = "wrong<br>";
-    //   $score = $_POST['score_one'];
-    //   echo "<br>your score is " . $score;
-
+      if ($percent >= 75) {
+        $message = '<p class="text">You bring the card to the door and slide it through the open panel.<br>Why are you doing this again?<br> Maniacal laughter follow and the panel slides shut.</p>';
+      } else {
+        $message = '<p class="text">You bring the card to the door and slide it through the open panel.<br>Why are you doing this again?<br> Nothing happens.</p>';
+      }
+	   }
+   }
+ }
 
 include_once 'includes/header.php';
 if (isset($message)) echo $message;
 
-echo "<form method=\"POST\" action=\"level_one_high_scores.php\"><fieldset style=\"width:50%\"><legend>Your final score is: " . $score . "</legend>";
+echo '<div class="score"><p class="text">Final Score: ' . $score . '</p><form method="POST" action="level_one_high_scores.php">';
 echo "<input type=\"hidden\" name=\"score_one\" value=" . $score . ">";
-echo "<br><br><input type=\"submit\" name=\"submit\"></form>";
+echo "<br><br><input type=\"submit\" name=\"submit\"></form></div>";
 ?>
 </body>
 </html>

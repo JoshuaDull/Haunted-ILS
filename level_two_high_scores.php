@@ -20,6 +20,8 @@ if (isset($_POST['submit'])) {
 }}
 
 ?>
+<body>
+  <div class="game">
 <?php
 include_once 'includes/header.php';
 $high_scores = [];
@@ -30,18 +32,18 @@ $result = $conn->query($query);
 if (!$result) die ("database error: " . $conn->error);
 $rows = $result->num_rows;
 
-echo "<table><tr><th>Username</th><th>Score</th></tr>";
+echo '<div class="score"><table><tr><th>Username</th><th>Score</th></tr>';
 while ($row = $result->fetch_assoc()) {
   echo "<tr><td>" . $row['user_name'] . "</td>";
   echo "<td>" . $row['score'] . "</td></tr>";
 }
-echo "</table>";
+echo "</table></div>";
 ?>
 <form action="index.php">
   <p class="buttons"><input type="submit" value="Return to Desktop"></p>
 </form>
 <form action="level_two.php">
   <p class="buttons"><input type="submit" value="Play Again"></p>
-</form>
+</form></div>
 </body>
 </html>

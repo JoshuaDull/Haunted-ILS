@@ -1,10 +1,8 @@
-
 <?php
 session_start();
-
+require_once 'includes/auth.php';
 require_once 'includes/login.php';
 require_once 'includes/functions.php';
-require_once 'includes/auth.php';
 $user_id = $_SESSION['user_id'];
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
@@ -18,8 +16,6 @@ if (!$result) {
   $user_name = $row['user_name'];
   $total_score = $row['SUM(`score`)'];
 }
-
-
 ?>
 
 <?php require_once 'includes/header.php'; ?>
@@ -27,7 +23,7 @@ if (!$result) {
 <body id="desktop">
         <div class="folders">
           <a href="level_one.php"><img class="folder"src="images/book.gif"></a>
-          <a href="level_two.php"><img class="folder"src="images/book.png"></a>
+          <a href="level_two.php"><img class="folder"src="images/Book.png"></a>
           <a href="application_one.html"><img class="folder"src="images/shield.png"></a>
         </div>
         <div class="menu">
